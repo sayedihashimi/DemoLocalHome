@@ -1,11 +1,12 @@
 ﻿@page "/"
 @inherits IndexBase
+@using LocalHome.Components;
 
-@if(ULinks != null && ULinks.Count > 0) {
-    @foreach(var ul in ULinks) {
-        <p>
-@ul.UserLink.Text - @ul.UserLink.Url<br/>
-        </p>
+@if (ULinks != null && ULinks.Count > 0)
+{
+    @foreach (var ul in ULinks)
+    {
+        <Link UserLinkVM="@ul" />
     }
 }
 
