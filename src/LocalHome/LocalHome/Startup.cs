@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LocalHome.Data;
+using LocalHome.Shared;
 
 namespace LocalHome {
     public class Startup {
@@ -25,6 +26,7 @@ namespace LocalHome {
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IUserLinkJsonReader, UserLinkJsonReader>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
