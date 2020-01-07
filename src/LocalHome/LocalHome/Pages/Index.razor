@@ -1,6 +1,12 @@
 ﻿@page "/"
 @inherits IndexBase
 
-<h1>Hello, world!</h1>
+@if(ULinks != null && ULinks.Count > 0) {
+    @foreach(var ul in ULinks) {
+        <p>
+@ul.UserLink.Text - @ul.UserLink.Url<br/>
+        </p>
+    }
+}
 
-Welcome to your new app.
+
