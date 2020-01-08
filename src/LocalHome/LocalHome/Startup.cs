@@ -27,6 +27,7 @@ namespace LocalHome {
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IUserLinkJsonReader, UserLinkJsonReader>();
+            services.AddSingleton<ISearchProviderJsonReader, SearchProviderJsonReader>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

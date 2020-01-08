@@ -33,5 +33,27 @@ namespace LocalHome.Pages {
             links.ForEach(ul => result.Add(new UserLinkViewModel { UserLink = ul }));
             return result;
         }
+
+        protected void DoFilter(ChangeEventArgs args) {
+            Console.WriteLine($"inside Index.Razor->DoFilter: {args.Value}");
+            string searchText = args.Value as string;
+
+            if (string.IsNullOrWhiteSpace(searchText)) {
+                // make them all visible
+                foreach (var ul in ULinks) {
+                    ul.Hidden = false;
+                }
+            }
+            else {
+                foreach (var ul in ULinks) {
+                    ul.Hidden = !IsMatch(ul.UserLink, searchText);
+                }
+            }
+        }
+
+        protected bool IsMatch(UserLink userLink, string searchText) {
+            var strtosearch = $"{userLink.Text};{userLink.ImageUrl};{userLink.Url}";
+            return strtosearch.Contains(searchText, StringComparison.OrdinalIgnoreCase);
+        }
     }
 }
